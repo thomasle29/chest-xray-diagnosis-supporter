@@ -18,4 +18,4 @@ if __name__ == "__main__":
     app = handler.Handler().setup(app)
 
     # Start server with host and port
-    app.run(host=config["SERVER"]["HOST"], port=config["SERVER"]["PORT"])
+    app.run(host=config["SERVER"]["HOST"], port=config["SERVER"]["PORT"], debug=False, threaded=False)

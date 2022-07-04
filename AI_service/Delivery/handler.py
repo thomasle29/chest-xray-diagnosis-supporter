@@ -1,11 +1,15 @@
+from crypt import methods
+# Import api functional
+import Delivery.api as  api
+
 class Handler:
     '''
     Handler class
     Setup and install api function to the router
     '''
 
-    # Import api functional
-    import Delivery.api as  api
+    def __init__(self):
+        self.api = api.API()
 
     def setup(self, router):
         '''
@@ -16,6 +20,7 @@ class Handler:
             the host router have include api functional
         '''
 
-        router.add_url_rule('/ping', 'ping', self.api.API().ping,  methods=['GET'])
-    
+        router.add_url_rule('/ping', 'ping', self.api.ping,  methods=['GET'])
+        router.add_url_rule('/chest/diagnosis', 'diagnosis', self.api.chestDiagnosis, methods=['GET'])
+
         return router
