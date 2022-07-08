@@ -1,0 +1,1 @@
+CALL pro_login('AnhNV','123abc');
