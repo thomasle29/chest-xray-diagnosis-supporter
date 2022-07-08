@@ -1,4 +1,4 @@
-DROP DATABASE hopital_db;
+DROP DATABASE IF EXISTS hopital_db;
 CREATE DATABASE hopital_db; 
 
 CREATE TABLE `hopital_db`.`doctor` (
@@ -8,9 +8,9 @@ CREATE TABLE `hopital_db`.`doctor` (
 	`doctor_name` NVARCHAR(30) NOT NULL,
 	`doctor_age` TINYINT NULL,
 	`doctor_sex` TINYINT NULL,
-	PRIMARY KEY (`doctor_id`)
-);
-
+	PRIMARY KEY (`doctor_id`));
+  
+  
 CREATE TABLE `hopital_db`.`patient_record` (
 	`patient_record_id` CHAR(36) NOT NULL,
     `patient_record_name` NVARCHAR(20) NOT NULL,
@@ -18,8 +18,8 @@ CREATE TABLE `hopital_db`.`patient_record` (
 	`patient_record_sex` TINYINT NULL,
 	`patient_record_job` NVARCHAR(20) NULL,
 	`patient_record_address` NVARCHAR(100) NULL,
-	PRIMARY KEY (`patient_record_id`)
-);
+	PRIMARY KEY (`patient_record_id`));
+
 
 CREATE TABLE `hopital_db`.`medical_record` (
 	`medical_record_id` CHAR(36) NOT NULL,
@@ -33,15 +33,13 @@ CREATE TABLE `hopital_db`.`medical_record` (
 	`medical_record_doctor_comment` NVARCHAR(25) NULL,
 	PRIMARY KEY (`medical_record_id`),
     FOREIGN KEY (`doctor_id`) REFERENCES `doctor`(`doctor_id`),
-	FOREIGN KEY (`patient_record_id`) REFERENCES `patient_record`(`patient_record_id`)
-);
+	FOREIGN KEY (`patient_record_id`) REFERENCES `patient_record`(`patient_record_id`));
 
 CREATE TABLE `hopital_db`.`disease` (
 	`disease_id` TINYINT NOT NULL AUTO_INCREMENT,
 	`disease_name` NCHAR(20) NOT NULL,
 	`disease_dangerouse_level` TINYINT,
-	PRIMARY KEY (`disease_id`)
-);
+	PRIMARY KEY (`disease_id`));
 
 CREATE TABLE `hopital_db`.`medical_record_disease` (
 	`medical_record_id` CHAR(32) NOT NULL,
@@ -50,7 +48,10 @@ CREATE TABLE `hopital_db`.`medical_record_disease` (
 	`medical_record_prediction_validation` DECIMAL(1,1) NOT NULL,
 	`medical_record_disease_doctor_validation` BIT NULL,
 	FOREIGN KEY(`disease_id`) REFERENCES `disease`(`disease_id`),
-	FOREIGN KEY(`medical_record_id`) REFERENCES `medical_record`(`medical_record_id`)
+	FOREIGN KEY(`medical_record_id`) REFERENCES `medical_record`(`medical_record_id`),
+    PRIMARY KEY(`disease_id`,`medical_record_id`)
 );
+
+
   
   
