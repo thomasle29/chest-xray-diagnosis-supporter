@@ -202,7 +202,9 @@ class Util:
         x = np.array(img, dtype='float')
         # x = cv2.cvtColor(x, cv2.COLOR_BGR2RGB)
         x = cv2.resize(x, (W, H), cv2.INTER_LINEAR)
-        x = np.stack((x,)*3, axis=-1)
+        # print(len(x.shape))
+        if len(x.shape) < 3:
+            x = np.stack((x,)*3, axis=-1)
         if preprocess:
             x -= mean
             x /= std

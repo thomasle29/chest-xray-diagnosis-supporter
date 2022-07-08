@@ -26,7 +26,7 @@ class API:
         contents = json.loads(flask.request.data)
 
         result = self.app.chestDiagnosis(contents['base64_image'])
-        print(result)
+        # print(result)
         json_results = json.dumps(str(result))
         try:
             return json_results
