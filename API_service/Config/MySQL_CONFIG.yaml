@@ -1,0 +1,5 @@
+MYSQL:
+  HOST: localhost
+  USER: root
+  PASSWORD: security2KL
+  DATABASE: hopital_db
