@@ -1,0 +1,15 @@
+<!-- <div class="container">
+    <h2>Image upload</h2>
+    <img *ngIf="url" [src]="url" height="250px">
+    <input type="file" (change)="onFileSelected($event)"><br>
+</div> -->
+<hr>
+<h2>ENCODE</h2>
+<div>
+    <input type="file" (change)="onChange($event)"/>
+</div>
+<div *ngIf="myImage">
+    <!-- chú ý chữ src phải để trong ngoặc vuông -->
+    <img [src]="myImage" alt="" width="500px" height="500px"/>
+    <textarea cols="50" rows="30" [(ngModel)]="myImage"></textarea>
+</div>
