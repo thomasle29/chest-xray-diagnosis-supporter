@@ -1,0 +1,57 @@
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.container {
+    width: 150px;
+    margin-left: 0;
+    height: 100%;
+
+}
+
+mat-grid-list {
+    padding: 15px;
+}
+
+mat-grid-tile p {
+    text-align: center;
+    color: azure
+}
+
+.example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+.nav-list button {
+    margin:auto 0px;
+    color: darkgrey;
+
+}
+
+.nav-list button:hover {
+    background-color: silver;
+    color: black;
+    width:130px !important;
+
+}
+
+.nav-list {
+    margin-top: 30px;
+}
+.container{
+  margin-left: 0px;
+}
