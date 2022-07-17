@@ -11,17 +11,5 @@ export class UserHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onChange = ($event: Event) => {
-    const target = $event.target as HTMLInputElement;
-
-    const file: File = (target.files as FileList)[0];
-
-    console.log(file);//in ra ten hinh anh da chon
-
-    // this.convertToBase64(file);
-  }
-  handleCLick=()=>{
-    this.onChange;
-  }
 
 }

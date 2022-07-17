@@ -26,7 +26,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { UserHeaderComponent } from './components/user-header/user-header.component';
-import { MedicalRecordComponent } from './components/medical-record/medical-record.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +37,7 @@ import { MedicalRecordComponent } from './components/medical-record/medical-reco
     HomeComponent,
     SideMenuComponent,
     UserHeaderComponent,
-    MedicalRecordComponent,
-
+    
   ],
   imports: [
     BrowserModule,
