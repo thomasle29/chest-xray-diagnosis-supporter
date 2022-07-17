@@ -1,19 +1,21 @@
-
+body{
+    background: #33334d;
+}
 .main-div mat-card{
     padding: 0px;//để toolbar tràn hết mat-card
     height:60%;
     border-radius: 6px;
-
+    
 }
 .login-form{
-
+    
     margin: 20px;
 }
 .title{
     text-align: center;
 }
 .form-container{
-    background-color: aliceblue;
+    background-color: azure;
     border-radius: 10px;
 }
 .logo{
@@ -24,12 +26,9 @@ mat-form-field{
     border-radius: 6px;
 }
 mat-label, .title h4{
-
+    
     color: grey;
 }
 .title h2{
     margin-bottom: 8px;
-}
-.main-div{
-  background-color: #27262ee9;
 }

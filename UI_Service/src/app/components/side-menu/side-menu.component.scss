@@ -6,7 +6,6 @@ img {
 .container {
     width: 150px;
     margin-left: 0;
-    height: 100%;
 
 }
 
@@ -45,13 +44,10 @@ mat-grid-tile p {
 .nav-list button:hover {
     background-color: silver;
     color: black;
-    width:130px !important;
+    width: 200px !important;
 
 }
 
 .nav-list {
     margin-top: 30px;
-}
-.container{
-  margin-left: 0px;
 }
