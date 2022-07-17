@@ -197,6 +197,7 @@ class Util:
         mean, std = self.get_mean_std_per_batch()
         # img_path = os.path.join(image_dir, img)
         # x = image.load_img(img_path, target_size=(H, W))
+        # print(base64_code)
         image_decode = base64.b64decode(base64_code)
         img = Image.open(io.BytesIO(image_decode))
         x = np.array(img, dtype='float')
