@@ -238,7 +238,7 @@ class Util:
         image_x = self.image_preprocessing(base64_code, preprocess=True)
         predictions = self.model.predict(image_x)
         # gradcam = self.grad_cam(image_x)
-        diagnosis_list = {}
+        diagnosis_list = []
         normal_image = self.image_preprocessing(base64_code, preprocess=False)
         normal_image = np.asarray(normal_image, np.float64)
 
@@ -258,13 +258,17 @@ class Util:
                     jpg_as_text = base64.b64encode(buffer)
 
                     diagnosis = {}
+                    diagnosis["disease_name"] = self.LABELS[i]
                     diagnosis["base64_image_diagnosis"] = jpg_as_text.decode('utf-8')
                     diagnosis["predictions"] = predictions[0][i]
 
-                    diagnosis_list[self.LABELS[i]] = diagnosis
+                    diagnosis_list.append(diagnosis)
+                    diagnosis_result = {
+                        "diagnosis": diagnosis_list
+                    }
                 j += 1
 
         if len(diagnosis_list) > 0:
-            return diagnosis_list
+            return diagnosis_result
 
-        return 0
+        return diagnosis_result
