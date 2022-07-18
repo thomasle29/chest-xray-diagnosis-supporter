@@ -242,7 +242,6 @@ class Util:
         normal_image = self.image_preprocessing(base64_code, preprocess=False)
         normal_image = np.asarray(normal_image, np.float64)
 
-        j = 1
         for i in range(len(self.LABELS)):
             if self.LABELS[i] in self.LABELS_TO_SHOW:
                 # print(f"Generating gradcam for class {labels[i]}")
@@ -263,12 +262,4 @@ class Util:
                     diagnosis["predictions"] = predictions[0][i]
 
                     diagnosis_list.append(diagnosis)
-                    diagnosis_result = {
-                        "diagnosis": diagnosis_list
-                    }
-                j += 1
-
-        if len(diagnosis_list) > 0:
-            return diagnosis_result
-
-        return diagnosis_result
+        return diagnosis_list
