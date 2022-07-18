@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 
-export class TrackingService {
+export class MedicalRecordService {
     private jsonConvert: JsonConvert = new JsonConvert();
 
     constructor(
@@ -30,7 +30,7 @@ export class TrackingService {
         xrayImage: string
         ): Observable<Response<MedicalDiseasePrediction[]>>{
         return this.http.post<Response<MedicalDiseasePrediction[]>>(
-            `${environment.BASE_URL}/submit`,
+            `${environment.BASE_URL}/analysis`,
             {
                 "patient_name": patientName,
                 "patient_birthday": patientBirthday,
@@ -48,6 +48,28 @@ export class TrackingService {
                 }
                 if (resp.data) {
                     resp.data = resp.data.map(item => this.jsonConvert.deserializeObject(item, MedicalDiseasePrediction));
+                }
+                return resp;
+            }));
+    }
+
+    submitDoctorPredcitionComment(
+        medicalRecordID: string, 
+        doctorPredictionComment: string, 
+        diseaseIDDoctorValidation: string,
+        diseaseNameByDoctor: string,
+        ): Observable<Response<String>>{
+        return this.http.post<Response<String>>(
+            `${environment.BASE_URL}/doctor/comment/submit`,
+            {
+                "medical_record_id": medicalRecordID,
+                "doctor_prediction_comment": doctorPredictionComment,
+                "disease_id_doctor_validation": diseaseIDDoctorValidation,
+                "disease_name_by_doctor": diseaseNameByDoctor
+            }
+            ).pipe(map(resp => {
+                if (resp.returncode !== 1) {
+                    return resp;
                 }
                 return resp;
             }));
