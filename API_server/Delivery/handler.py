@@ -21,6 +21,6 @@ class Handler:
         '''
 
         router.add_url_rule('/ping', 'ping', self.api.ping,  methods=['GET'])
-        router.add_url_rule('/chest/diagnosis', 'diagnosis', self.api.chestDiagnosis, methods=['POST'])
+        router.add_url_rule('/chest/analysis', 'analysis', self.api.analysis, methods=['POST'])
 
         return router

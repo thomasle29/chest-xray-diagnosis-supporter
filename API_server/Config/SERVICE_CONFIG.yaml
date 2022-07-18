@@ -1,0 +1,4 @@
+SERVER:
+  NAME: api-server
+  HOST: 0.0.0.0
+  PORT: 8010

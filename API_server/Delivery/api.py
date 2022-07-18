@@ -1,6 +1,7 @@
 import Application.app as app
 import json
 import flask
+from . import entity 
 
 class API:
     '''
@@ -20,15 +21,16 @@ class API:
         except:
             return "ping function have error"
 
-    def chestDiagnosis(self):
-        
+    def analysis(self):
+
         # Convert json data to distionary
         contents = json.loads(flask.request.data)
+        medical_record = entity.MedicalRecord(**contents)
 
-        result = self.app.chestDiagnosis(contents['base64_image'])
-        # print(result)
-        # json_results = json.dumps(result)
+        result = self.app.chestAnalysis(medical_record)
+
+        json_results = json.dumps(str(result))
         try:
-            return str(result)
+            return json_results
         except:
             return "chestDiagnosis function have error"

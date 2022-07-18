@@ -23,12 +23,12 @@ CREATE TABLE `hopital_db`.`patient_record` (
 
 CREATE TABLE `hopital_db`.`medical_record` (
 	`medical_record_id` CHAR(36) NOT NULL,
-    `patient_record_id` CHAR(32) NOT NULL,
+    `patient_record_id` CHAR(36) NOT NULL,
     `doctor_id` SMALLINT NOT NULL,
     `medical_record_date` DATE NOT NULL,
 	`medical_record_advice` NVARCHAR(100) NULL,
 	`medical_record_symptom` NVARCHAR(100) NULL,
-	`medical_record_image` TEXT NULL,
+	`medical_record_image` BLOB NULL,
 	`medical_record_prediction_num` TINYINT NULL,
 	`medical_record_doctor_comment` NVARCHAR(25) NULL,
 	PRIMARY KEY (`medical_record_id`),
@@ -42,14 +42,14 @@ CREATE TABLE `hopital_db`.`disease` (
 	PRIMARY KEY (`disease_id`));
 
 CREATE TABLE `hopital_db`.`medical_record_disease` (
-	`medical_record_id` CHAR(32) NOT NULL,
+	`medical_record_id` CHAR(36) NOT NULL,
 	`disease_id` TINYINT NOT NULL,
-	`medical_record_disease_image_prediction` TEXT NULL,
-	`medical_record_prediction_validation` DECIMAL(1,1) NOT NULL,
+	`medical_record_disease_image_prediction` BLOB NULL,
+	`medical_record_prediction` DECIMAL(1,1) NOT NULL,
 	`medical_record_disease_doctor_validation` BIT NULL,
+	PRIMARY KEY(`disease_id`,`medical_record_id`),
 	FOREIGN KEY(`disease_id`) REFERENCES `disease`(`disease_id`),
-	FOREIGN KEY(`medical_record_id`) REFERENCES `medical_record`(`medical_record_id`),
-    PRIMARY KEY(`disease_id`,`medical_record_id`)
+	FOREIGN KEY(`medical_record_id`) REFERENCES `medical_record`(`medical_record_id`)
 );
 
 
