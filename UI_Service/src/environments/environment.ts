@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://127.0.0.1:8001/api_service',
+  SERVER_URL: 'http://127.0.0.1:8010',
   // PORTAL_URL: 'http://34.101.101.43:8001/covid19/api',
 };
 

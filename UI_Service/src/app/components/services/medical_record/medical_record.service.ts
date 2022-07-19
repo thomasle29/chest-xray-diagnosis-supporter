@@ -4,7 +4,7 @@ import { JsonConvert } from 'json2typescript';
 import { map } from 'rxjs/operators';
 import { Response } from '../response.model';
 import { MedicalDiseasePrediction } from './medical_record.model';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,27 +13,25 @@ import { Observable } from 'rxjs';
 
 export class MedicalRecordService {
     private jsonConvert: JsonConvert = new JsonConvert();
+    // static submitMedicalRecord: any;
 
     constructor(
       private http: HttpClient
     ) { }
 
     submitMedicalRecord(
-        patientName: string, 
-        patientBirthday: string, 
-        patientSex: number,
-        patientJob: string,
-        patientAddress: string,
-        doctorID: string,
-        patientSymptoms: string,
-        doctorAdvice: string,
-        xrayImage: string
+        { 
+            patientName, patientage, patientSex, patientJob, patientAddress, doctorID, patientSymptoms, doctorAdvice, xrayImage 
+        }: { 
+            patientName: string; patientage: number; patientSex: number; patientJob: string; patientAddress: string; doctorID: string; patientSymptoms: string; doctorAdvice: string; xrayImage: string; 
+        }
         ): Observable<Response<MedicalDiseasePrediction[]>>{
+            console.log("Run submitMedicalRecord")
         return this.http.post<Response<MedicalDiseasePrediction[]>>(
-            `${environment.BASE_URL}/analysis`,
+            `${environment.SERVER_URL}/chest/analysis`,
             {
                 "patient_name": patientName,
-                "patient_birthday": patientBirthday,
+                "patient_age": patientage,
                 "patient_sex": patientSex,
                 "patient_job": patientJob,
                 "patient_address": patientAddress,
@@ -60,7 +58,7 @@ export class MedicalRecordService {
         diseaseNameByDoctor: string,
         ): Observable<Response<String>>{
         return this.http.post<Response<String>>(
-            `${environment.BASE_URL}/doctor/comment/submit`,
+            `${environment.SERVER_URL}/doctor/comment/submit`,
             {
                 "medical_record_id": medicalRecordID,
                 "doctor_prediction_comment": doctorPredictionComment,
