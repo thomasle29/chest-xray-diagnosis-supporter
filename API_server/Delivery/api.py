@@ -2,6 +2,7 @@ import Application.app as app
 import json
 import flask
 from . import entity 
+import sys
 
 class API:
     '''
@@ -24,6 +25,7 @@ class API:
     def analysis(self):
 
         # Convert json data to distionary
+        print('Run delevery.API.analysis', file=sys.stderr)
         contents = json.loads(flask.request.data)
         medical_record = entity.MedicalRecord(**contents)
 

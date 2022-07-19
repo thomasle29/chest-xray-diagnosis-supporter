@@ -20,7 +20,7 @@ class Handler:
             the host router have include api functional
         '''
 
-        router.add_url_rule('/ping', 'ping', self.api.ping,  methods=['GET'])
+        router.add_url_rule('/ping', 'ping', self.api.ping,  methods=['GET'], )
         router.add_url_rule('/chest/analysis', 'analysis', self.api.analysis, methods=['POST'])
 
         return router

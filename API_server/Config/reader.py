@@ -8,7 +8,7 @@ class Reader:
 
     # Identify path config file 
     CONFIG_DIR_SERVER = "Config/SERVICE_CONFIG.yaml"
-    CONFIG_DIR_MYSQL = "Config/MYSQL_CONFIG.yaml"
+    CONFIG_DIR_MYSQL = "Config/MySQL_CONFIG.yaml"
     CONFIG_DIR_AI_SERVER = "Config/AI_SERVER_CONFIG.yaml"
 
     def __init__(self) -> None:

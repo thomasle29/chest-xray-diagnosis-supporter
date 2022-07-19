@@ -2,6 +2,7 @@ import flask
 import Config.reader as reader
 import json
 import Delivery.handler as handler
+from flask_cors import CORS, cross_origin
 
 if __name__ == "__main__":
     # Get config
@@ -11,6 +12,8 @@ if __name__ == "__main__":
 
     # Identify server name
     app = flask.Flask(config["SERVER"]["NAME"])
+    cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     # DEBUG flag
     # app.config["DEBUG"] = True
