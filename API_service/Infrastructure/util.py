@@ -43,27 +43,46 @@ class Util:
         except:
             return "1"
     
+    # create a new medical record
     def pro_new_medical_record(self,args=()):
         try:
-            str(self.cursor.callproc('pro_new_medical_record', args))
+            id = None
+            self.cursor.callproc('pro_new_medical_record', args)
+            self.mydb.commit()
+            for res in self.cursor.stored_results():
+                id = tuple(res.fetchall())
+            return id[0][0]
+        except mysql.connector.Error as error:
+            print("Failed to execute stored procedure: {}".format(error))
+            return "1"
+
+    # reporting
+    def pro_diagnosis_report(self,args = ()):
+        try:
+            self.call_procedure('pro_diagnosis_report',args)
+            self.mydb.commit()
+            return "0"
+        except:
+            return "1"
+
+    # find id of a disease
+    def pro_disease_id(self,args = ()):
+        print(args)
+        print("disease _ID")
+        return str(self.call_procedure('pro_disease_id',args)[0][0])
+
+    # update medial after report
+    def pro_report_medical(self,args =()):
+        print(args)
+        try:
+            self.cursor.callproc('pro_report_medical', args)
             self.mydb.commit()
             return "0"
         except mysql.connector.Error as error:
             print("Failed to execute stored procedure: {}".format(error))
             return "1"
-            
-    def pro_diagnosis_report(self,args = ()):
-        self.cursor.callproc('pro_diagnosis_report',args)
-        self.mydb.commit()
-        return "yes"
-        # try:
-        #     print(self.cursor.callproc('pro_diagnosis_report',args))
-        #     self.mydb.commit()
-        #     return "0"
-        # except:
-        #     return "1"
-    def pro_disease_id(self,args = ()):
-        return self.call_procedure(args)[0][0]
+
+
 
     def close_connect_db(self):
         if (self.mydb.is_connected()):

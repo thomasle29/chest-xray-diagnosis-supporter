@@ -33,5 +33,5 @@ class API:
 
     def diagnosis_report(self):
         contents = json.loads(flask.request.data)
-        result = self.app.pro_diagnosis_report(contents)
+        result = self.app.submit_report(contents)
         return result

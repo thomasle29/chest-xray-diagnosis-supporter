@@ -23,6 +23,6 @@ class Handler:
 
         router.add_url_rule('/ping', 'ping', self.api.ping,  methods=['GET'])
         router.add_url_rule('/api_service/login', 'login', self.api.login, methods=['POST'])
-        router.add_url_rule('/api_service/submit', 'submit', self.api.new_medical_record, methods=['GET'])
-        router.add_url_rule('/api_service/report', 'report', self.api.diagnosis_report, methods=['GET'])
+        router.add_url_rule('/api_service/submit', 'submit', self.api.new_medical_record, methods=['POST'])
+        router.add_url_rule('/api_service/report', 'report', self.api.diagnosis_report, methods=['POST'])
         return router
