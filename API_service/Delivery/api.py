@@ -1,4 +1,4 @@
-from MySQL import connect_MySql
+from pyMySQL import connect_MySql
 import Application.app as app
 import flask
 import json
@@ -8,7 +8,7 @@ class API:
     API class:
     Manufacturing api function
     '''
-    def __init__(self) -> None:
+    def __init__(self):
         self.app = app.App()
 
     def ping(self):
